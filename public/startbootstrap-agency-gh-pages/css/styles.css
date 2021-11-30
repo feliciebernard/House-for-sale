@@ -11410,7 +11410,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  background-image: url("https://res.cloudinary.com/felicie/image/upload/c_scale,w_1989/v1638292741/LesAndelys/header-bg_qlflvw.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11720,7 +11720,7 @@ header.masthead .masthead-heading {
 
 section#contact {
   background-color: #212529;
-  background-image: url("../assets/img/phone-image.jpg");
+  background-image: url("https://res.cloudinary.com/felicie/image/upload/v1638292739/LesAndelys/phone-image_fa8f6y.jpg");
   background-repeat: no-repeat;
   background-position: center;
 }
