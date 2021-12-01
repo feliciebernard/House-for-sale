@@ -24,7 +24,9 @@
 </head>
 
 <body id="page-top">
+  <% unless controller_name == "home_page" %>
   <%= render 'layouts/navbar' %>
+  <% end %>
   <%= yield %>
 </body>
 
