@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pictures
   resources :places
   get '/le-parc' => 'static_pages#parc'
   get '/la-maison' => 'static_pages#maison'
