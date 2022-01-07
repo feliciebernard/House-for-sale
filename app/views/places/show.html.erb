@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
+<section class="page-section bg-light">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Main picture:</strong>
-  <%= @place.main_picture %>
-</p>
 
-<p>
-  <strong>Head:</strong>
-  <%= @place.head %>
-</p>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="modal-body">
+            <!-- Project details-->
+            <h2 class="text-uppercase"><%= @place.head %></h2>
+            <p class="item-intro text-muted"><%= @place.subhead %></p>
+            <img class="img-fluid d-block mx-auto" src="<%= @place.main_picture %>" />
+            <div>
+              <p><%= @place.description %></p>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Subhead:</strong>
-  <%= @place.subhead %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @place.description %>
-</p>
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+  <%= link_to 'Edit', edit_place_path(@place) %>
+  <%= link_to 'Supprimer', @place, method: :delete, data: { confirm: 'Supprimer ?' } %>
+  <%= link_to 'Back', places_path %>
+</section>
