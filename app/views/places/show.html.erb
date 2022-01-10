@@ -1,27 +1,42 @@
-<section class="page-section bg-light">
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="modal-body">
-          <!-- Project details-->
-          <h2 class="text-uppercase"><%= @place.head %></h2>
-          <p class="item-intro text-muted"><%= @place.subhead %></p>
-          <img class="img-fluid d-block mx-auto" src="<%= @place.main_picture %>" />
-          <div>
-            <p><%= @place.description %></p>
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>
+<!-- Project details-->
+<h2 class="text-center section-heading text-uppercase"><%= @place.head %></h2>
+
+<div class="container" style="width: 60%">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <% @pictures.each_with_index do |picture, i| %>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<%= i %>" class="<% if i == 0 %> active <% end %>" aria-current="true" aria-label="Slide #{i)">
+      </button>
+      <% end %>
     </div>
+
+    <div class="carousel-inner">
+      <% @pictures.each_with_index do |picture, i| %>
+      <div class="carousel-item <% if i == 0 %>active<% end %>">
+        <img src="<%= picture.image %>" class="d-block w-100" alt="<%= picture.caption %>">
+        <div class="carousel-caption d-none d-md-block">
+          <h4><%= picture.caption %></h4>
+          <div class="portfolio-caption-subheading text-muted">
+            <%= link_to 'Modifier', edit_picture_path(picture) %> -
+            <%= link_to 'Supprimer', picture, method: :delete, data: { confirm: 'Supprimer ?' } %>
+          </div>
+          <p></p>
+        </div>
+        <tr>
+      </tr>
+      </div>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Précédent</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Suivant</span>
+    </button>
   </div>
-
-
-  <%= link_to 'Edit', edit_place_path(@place) %>
-  <%= link_to 'Supprimer', @place, method: :delete, data: { confirm: 'Supprimer ?' } %>
-  <%= link_to 'Back', places_path %>
-</section>
+</div>

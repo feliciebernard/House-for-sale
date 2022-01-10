@@ -12,6 +12,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
+    @place = Place.all
     @picture = Picture.new
   end
 
@@ -64,6 +65,6 @@ class PicturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def picture_params
-      params.require(:picture).permit(:image, :caption)
+      params.require(:picture).permit(:image, :caption, :place_id)
     end
 end

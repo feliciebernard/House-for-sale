@@ -24,10 +24,12 @@
 </head>
 
 <body id="page-top">
-  <% unless controller_name == "home_page" %>
-  <%= render 'layouts/navbar' %>
-  <% end %>
-  <%= yield %>
+  <% unless action_name == "index" && controller_name == "places" %>
+  <section class="page-section bg-light">
+    <%= render 'layouts/navbar' %>
+    <% end %>
+    <%= yield %>
+  </section>
 </body>
 
 <footer>
