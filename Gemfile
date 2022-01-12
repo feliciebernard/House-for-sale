@@ -66,3 +66,9 @@ gem 'table_print'
 
 # Picture cloud
 gem 'cloudinary'
+
+# Validate images
+gem 'activestorage-validator'
+
+# Security key
+gem 'dotenv-rails'

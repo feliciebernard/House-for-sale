@@ -1,8 +1,21 @@
+
+
 <p id="notice"><%= notice %></p>
 
 
 <!-- Project details-->
 <h2 class="text-center section-heading text-uppercase"><%= @place.head %></h2>
+
+<%if @pictures.empty?%>
+<br>
+<br>
+<br>
+<div class="col col-lg-12">
+  <div class="text-center">
+    <a class="btn btn-primary btn-xl text-uppercase" href="pictures/new">Nouvelle photo</a>
+  </div>
+</div>
+<% else %>
 
 <div class="container" style="width: 60%">
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -16,7 +29,7 @@
     <div class="carousel-inner">
       <% @pictures.each_with_index do |picture, i| %>
       <div class="carousel-item <% if i == 0 %>active<% end %>">
-        <img src="<%= picture.image %>" class="d-block w-100" alt="<%= picture.caption %>">
+        <%= image_tag picture.image, :class => "d-block w-100", :alt => picture.caption%>
         <div class="carousel-caption d-none d-md-block">
           <h4><%= picture.caption %></h4>
           <div class="portfolio-caption-subheading text-muted">
@@ -26,7 +39,7 @@
           <p></p>
         </div>
         <tr>
-      </tr>
+        </tr>
       </div>
       <% end %>
     </div>
@@ -40,3 +53,5 @@
     </button>
   </div>
 </div>
+
+<%end%>

@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
 
   # GET /places or /places.json
   def index
-    @places = Place.all
+    @places = Place.order('created_at')
   end
 
   # GET /places/1 or /places/1.json
@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: "Place was successfully created." }
+        format.html { redirect_to places_path, notice: "Place was successfully created." }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PlacesController < ApplicationController
   def update
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: "Place was successfully updated." }
+        format.html { redirect_to places_path, notice: "Place was successfully updated." }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit, status: :unprocessable_entity }

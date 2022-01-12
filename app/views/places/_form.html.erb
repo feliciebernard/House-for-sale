@@ -1,37 +1,30 @@
-<%= form_with(model: place, local: true) do |form| %>
+<div class="container">
+  <%= form_with(model: place, local: true) do |form| %>
   <% if place.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
-
-      <ul>
-      <% place.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <div id="error_explanation">
+    <% place.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+  </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :main_picture %>
-    <%= form.text_field :main_picture %>
-  </div>
-
-  <div class="field">
-    <%= form.label :head %>
-    <%= form.text_field :head %>
-  </div>
-
-  <div class="field">
-    <%= form.label :subhead %>
-    <%= form.text_field :subhead %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <form>
+    <div class="form-group">
+      <label for="form-main-picture">Photo principale</label>
+      <%= form.file_field :main_picture, class: "form-control", id: "form-main-picture" %>
+      <br>
+      <label for="form-head">Titre</label>
+      <%= form.text_field :head, class: "form-control", id: "form-head" %>
+      <br>
+      <label for="form-subhead">Sous-titre</label>
+      <%= form.text_field :subhead, class: "form-control", id: "form-subhead" %>
+      <br>
+      <label for="form-description">Description</label>
+      <%= form.text_area :description, class: "form-control", id: "form-description", rows: "3" %>
+      <br>
+      <div class="actions">
+        <%= form.submit "Valider", class: "btn btn-primary btn-xl text-uppercase" %>
+      </div>
+    </div>
+  </form>
+  <% end %>
+</div>

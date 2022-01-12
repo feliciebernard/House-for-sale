@@ -1,32 +1,27 @@
-<%= form_with(model: picture, local: true) do |form| %>
-<% if picture.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
-
-  <ul>
+<div class="container">
+  <%= form_with(model: picture, local: true) do |form| %>
+  <% if picture.errors.any? %>
+  <div id="error_explanation">
     <% picture.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <%= message %>
     <% end %>
-  </ul>
+  </div>
+  <% end %>
+  <form>
+    <div class="form-group">
+      <label for="form-image">Photo</label>
+      <%= form.file_field :image, class: "form-control", id: "form-image" %>
+      <br>
+      <label for="form-caption">Titre</label>
+      <%= form.text_field :caption, class: "form-control", id: "form-caption" %>
+      <br>
+      <label for="form-place">Atribuer la photo à l'étiquette : </label>
+      <%= form.collection_select(:place_id, Place.all, :id, :head, {:include_blank=>'Choisir'}) %>
+      <br><br>
+      <div class="actions">
+        <%= form.submit "Valider", class: "btn btn-primary btn-xl text-uppercase" %>
+      </div>
+    </div>
+  </form>
+  <% end %>
 </div>
-<% end %>
-
-<div class="field">
-  <%= form.label :Photo %>
-  <%= form.file_field :image %>
-</div>
-
-<div class="field">
-  <%= form.label :Description %>
-  <%= form.text_field :caption %>
-</div>
-
-<div class="field">
-  <%= form.label :Endroit %>
-  <%= form.collection_select(:place_id, Place.all, :id, :head) %>
-</div>
-
-<div class="actions">
-  <%= form.submit %>
-</div>
-<% end %>

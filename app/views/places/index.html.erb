@@ -58,7 +58,10 @@
             <div class="portfolio-hover">
               <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
             </div>
-            <img class="img-fluid" src="<%= place.main_picture %>" alt="<%= place.head %>" />
+            <%if place.main_picture.attached?%>
+            <%= image_tag place.main_picture, :class => "img-fluid", :alt => place.head%>
+            <%else%>
+            <%end%>
           </a>
           <a class="paragraph-link" data-bs-toggle="modal" href="#portfolioModal<%= place.id %>">
             <div class="portfolio-caption">
@@ -83,7 +86,10 @@
                       <!-- Project details-->
                       <h2 class="text-uppercase"><%= place.head %></h2>
                       <p class="item-intro text-muted"><%= place.subhead %></p>
-                      <img class="img-fluid d-block mx-auto" src="<%= place.main_picture %>" />
+                      <%if place.main_picture.attached?%>
+                      <%= image_tag place.main_picture, :class => "img-fluid d-block mx-auto", :alt => place.head%>
+                      <%else%>
+                      <%end%>
                       <div>
                         <p><%= place.description %></p>
                         <td><%= link_to 'Modifier', edit_place_path(place) %></td>
