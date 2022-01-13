@@ -3,5 +3,36 @@
 </div>
 <br>
 
-<%= render 'form', place: @place %>
+<div class="container">
+  <%= form_with(model: @place, local: true) do |form| %>
+  <% if @place.errors.any? %>
+  <div id="error_explanation">
+    <% @place.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+  </div>
+  <% end %>
+  <form>
+    <div class="form-group">
+      <label for="form-main-picture">Photo principale</label>
+      <%= form.file_field :main_picture, id: "form-main-picture", style:"display:none;" %>
+      <label for="form-main-picture", class="form-control">Changer la photo</label>
+      <br>
+      <label for="form-head">Titre</label>
+      <%= form.text_field :head, class: "form-control", id: "form-head" %>
+      <br>
+      <label for="form-subhead">Sous-titre</label>
+      <%= form.text_field :subhead, class: "form-control", id: "form-subhead" %>
+      <br>
+      <label for="form-description">Description</label>
+      <%= form.text_area :description, class: "form-control", id: "form-description", rows: "3" %>
+      <br>
+      <div class="actions">
+        <%= form.submit "Valider", class: "btn btn-primary btn-xl text-uppercase" %>
+      </div>
+    </div>
+  </form>
+  <% end %>
+</div>
+
 
