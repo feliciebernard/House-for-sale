@@ -33,8 +33,11 @@
         <div class="carousel-caption d-none d-md-block">
           <h4><%= picture.caption %></h4>
           <div class="portfolio-caption-subheading text-muted">
+            <% if admin_signed_in? %>
             <%= link_to 'Modifier', edit_picture_path(picture) %> -
             <%= link_to 'Supprimer', picture, method: :delete, data: { confirm: 'Supprimer ?' } %>
+            <% else %>
+            <% end %>
           </div>
           <p></p>
         </div>

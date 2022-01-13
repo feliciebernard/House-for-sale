@@ -72,3 +72,6 @@ gem 'activestorage-validator'
 
 # Security key
 gem 'dotenv-rails'
+
+# Administrator module
+gem 'devise'

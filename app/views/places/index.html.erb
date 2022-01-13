@@ -35,6 +35,7 @@
       <div class="row">
         <div class="col col-lg-3">
         </div>
+        <% if admin_signed_in? %>
         <div class="col col-lg-3">
           <div class="text-center">
             <a class="btn btn-primary btn-xl text-uppercase" href="places/new">Nouvelle étiquette</a>
@@ -50,6 +51,8 @@
       </div>
     </div>
     <br><br><br>
+    <% else %>
+    <% end %>
     <div class="row">
       <div class="col-lg-4 col-sm-6 mb-4">
         <% @places.each do |place| %>
@@ -67,8 +70,11 @@
             <div class="portfolio-caption">
               <div class="portfolio-caption-heading"><%= place.head %></div>
               <div class="portfolio-caption-subheading text-muted"><%= place.subhead %></div>
+              <% if admin_signed_in? %>
               <td><%= link_to 'Modifier', edit_place_path(place) %></td>
               <td><%= link_to 'Supprimer', place, method: :delete, data: { confirm: 'Supprimer ?' } %></td>
+              <% else %>
+              <% end %>
             </div>
           </a>
         </div>
@@ -92,8 +98,11 @@
                       <%end%>
                       <div>
                         <p><%= place.description %></p>
+                        <% if admin_signed_in? %>
                         <td><%= link_to 'Modifier', edit_place_path(place) %></td>
                         <td><%= link_to 'Supprimer', place, method: :delete, data: { confirm: 'Supprimer ?' } %></td>
+                        <% else %>
+                        <% end %>
                       </div>
                       <br>
                       <div>

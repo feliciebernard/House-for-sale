@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   resources :pictures
   resources :places
   get '/le-parc' => 'static_pages#parc'

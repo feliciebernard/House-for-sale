@@ -1,0 +1,48 @@
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <h1 class="h3 mb-3 font-weight-normal text-center">Modifier l'adresse ou le mot de passe</h1>
+      <br>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :email, "Email" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <br>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :password, "Nouveau mot de passe" %> <em>(<%= @minimum_password_length %>) charactères minimum</em><br />
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirmation du nouveau mot de passe" %><br />
+        <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <%= f.label :current_password, "Mot de passe actuel afin de valider les mises à jour" %><br />
+        <%= f.password_field :current_password, autofocus: true, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <div class="actions mt-5">
+        <%= f.submit "Mettre à jour", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
