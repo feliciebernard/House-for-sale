@@ -7770,7 +7770,10 @@ textarea.form-control-lg {
   color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity)) !important;
 }
 
-
+.text-muted {
+  --bs-text-opacity: 1;
+  color: ##212529 !important;
+}
 
 .text-black-50 {
   --bs-text-opacity: 1;
@@ -11372,6 +11375,7 @@ p {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border: none;
+    background-color: transparent;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
   #mainNav .navbar-brand {
