@@ -75,3 +75,4 @@ gem 'dotenv-rails'
 
 # Administrator module
 gem 'devise'
+gem 'rails-i18n'

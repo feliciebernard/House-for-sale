@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :admins
+  devise_scope :admin do
+  get "/admin" => "devise/sessions#new"
+  end
   resources :pictures
   resources :places
   get '/le-parc' => 'static_pages#parc'
@@ -8,7 +11,8 @@ Rails.application.routes.draw do
   get '/le-port' => 'static_pages#port'
   get '/la-dépendance' => 'static_pages#dependance'
   get 'home_page' => 'home_page#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "places#index"
 end

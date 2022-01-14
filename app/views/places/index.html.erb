@@ -8,8 +8,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+        <%if admin_signed_in?%>
+        <li class="nav-item"><%=link_to "Se déconnecter", destroy_admin_session_path, :method => :delete, class:"nav-link"%></li>
+        <li class="nav-item"><%=link_to "Modifier mes identifiants", edit_admin_registration_path(current_admin.id), class:"nav-link"%></li>
+        <%else%>
         <li class="nav-item"><a class="nav-link" href="#portfolio">Explorer la propriété</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Nous contacter</a></li>
+        <%end%>
       </ul>
     </div>
   </div>
@@ -131,7 +136,7 @@
   <div class="container">
     <div class="text-center">
       <h2 class="section-heading text-uppercase">Nous contacter</h2>
-      <h3 class="section-subheading text-muted text-muted-white">Contactez-nous pour toute question ou pour organiser une visite</h3>
+      <h3 class="section-subheading text-muted" style="color: white;">Contactez-nous pour toute question ou pour organiser une visite</h3>
       <a class="btn btn-primary btn-xl text-uppercase" href="mailto:sciprlduvalsaintmartin@orange.fr">
         <i class="far fa-paper-plane"></i>
         Envoyer un mail
