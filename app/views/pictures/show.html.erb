@@ -1,4 +1,4 @@
-
+<% if admin_signed_in? %>
 <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="row justify-content-center">
@@ -6,8 +6,10 @@
       <div class="modal-body">
         <%=image_tag @picture.image, :class => "img-fluid d-block mx-auto", :alt => @picture.caption%>
         <h2 class="text-uppercase text-center"><%= @picture.caption %></h2>
-        <%= link_to 'Modifier la photo', edit_picture_path(@picture) %>
+        <%= link_to 'Modifier', edit_picture_path(@picture) %> - <%=link_to "Nouvelle photo", new_picture_path%>
       </div>
     </div>
   </div>
 </div>
+<% else redirect path %>
+<% end %>

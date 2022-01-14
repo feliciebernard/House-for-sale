@@ -1,3 +1,4 @@
+<% if admin_signed_in? %>
 <p id="notice"><%= notice %></p>
 
 <h1>Pictures</h1>
@@ -17,7 +18,7 @@
     <tr>
       <td><%= image_tag picture.image%></td>
       <td><%= picture.caption %></td>
-      <td><%= picture.place.head %></td>
+      <td><%= picture.place.try(:head) %></td>
       <td><%= link_to 'Show', picture %></td>
       <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
       <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,3 +30,6 @@
 <br>
 
 <%= link_to 'New Picture', new_picture_path %>
+<%else%>
+<p class="text-center">Il n'y a rien par ici !</p>
+<%end%>

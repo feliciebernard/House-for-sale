@@ -10,13 +10,16 @@
 <br>
 <br>
 <br>
+  <% if admin_signed_in? %>
 <div class="col col-lg-12">
   <div class="text-center">
     <%=link_to "Nouvelle photo", new_picture_path, class:"nbtn btn-primary btn-xl text-uppercase"%>
   </div>
 </div>
+  <% else %>
+<p class="text-center">Pas encore de photos, cela devrait bientôt arriver !</p>
+  <% end %>
 <% else %>
-
 <div class="container" style="width: 60%">
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -35,7 +38,7 @@
           <div class="portfolio-caption-subheading">
             <% if admin_signed_in? %>
             <%= link_to 'Modifier', edit_picture_path(picture) %> -
-            <%= link_to 'Supprimer', picture, method: :delete, data: { confirm: 'Supprimer ?' } %>
+            <%= link_to 'Supprimer', picture, method: :delete, data: { confirm: 'Supprimer ?' } %> - <%=link_to "Nouvelle photo", new_picture_path%>
             <% else %>
             <% end %>
           </div>
